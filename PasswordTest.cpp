@@ -83,3 +83,31 @@ TEST(PasswordTest, mixed_empty)
 	int actual = my_password.has_mixed_case("");
 	ASSERT_FALSE(actual);
 }
+
+TEST(PasswordTest, starting_lower)
+{
+	Password my_password;
+	int actual = my_password.has_mixed_case("zZZ");
+	ASSERT_TRUE(actual);
+}
+
+TEST(PasswordTest, number_password_lower)
+{
+	Password my_password;
+	int actual = my_password.has_mixed_case("q123");
+	ASSERT_FALSE(actual);
+}
+
+TEST(PasswordTest, number_password_upper)
+{
+	Password my_password;
+	int actual = my_password.has_mixed_case("Q123");
+	ASSERT_FALSE(actual);
+}
+
+TEST(PasswordTest, count_passwords)
+{
+	Password my_password;
+	int actual = my_password.unique_characters("abc123abc");
+	ASSERT_EQ(6,actual);
+}

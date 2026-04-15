@@ -1,8 +1,8 @@
 #include "Password.h"
 #include <string>
-
+#include <unordered_set>
 using std::string;
-
+using std::unordered_set;
 /*
   The function receives a string counts how many times the same character 
   occurs at the beginning of the string, before any other characters (or the
@@ -34,6 +34,17 @@ bool Password::has_mixed_case(string str){
     }
   }
   return false;
+}
+
+/* Receives a string and returns a count of how many case-sensitive unique characters there are. If there are duplicate instances of the same character it should only count as a single character. Even if characters look similar, as long as they have distinct ASCII values, they should qualify as unique characters. */
+
+unsigned int unique_characters(string str){
+	unordered_set <char> uniqueChars;
+	for(char c: str)
+	{
+		uniqueChars.insert(c);
+	}
+	return uniqueChars.size();
 }
 
 
