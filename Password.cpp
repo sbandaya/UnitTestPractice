@@ -38,13 +38,13 @@ bool Password::has_mixed_case(string str){
 
 /* Receives a string and returns a count of how many case-sensitive unique characters there are. If there are duplicate instances of the same character it should only count as a single character. Even if characters look similar, as long as they have distinct ASCII values, they should qualify as unique characters. */
 
-unsigned int unique_characters(string str){
+unsigned int Password::unique_characters(string str){
 	unordered_set <char> uniqueChars;
 	for(char c: str)
 	{
 		uniqueChars.insert(c);
 	}
-	return uniqueChars.size();
+	return static_cast<unsigned int>(uniqueChars.size());
 }
 
 

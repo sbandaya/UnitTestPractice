@@ -105,9 +105,25 @@ TEST(PasswordTest, number_password_upper)
 	ASSERT_FALSE(actual);
 }
 
-TEST(PasswordTest, count_passwords)
+
+TEST(PasswordTest, unique_char_repeats)
 {
 	Password my_password;
-	int actual = my_password.unique_characters("abc123abc");
-	ASSERT_EQ(6,actual);
+	int actual = my_password.unique_characters("abcabc");
+	ASSERT_EQ(3,actual);
+}
+
+TEST(PasswordTest, unique_char_no_repeats)
+{
+	Password my_password;
+	int actual = my_password.unique_characters("abcdefg");
+	ASSERT_EQ(7,actual);
+}
+
+
+TEST(PasswordTest, unqiue_char_numbers)
+{
+	Password my_password;
+	int actual = my_password.unique_characters("012345678910");
+	ASSERT_EQ(10,actual);
 }
